@@ -1,0 +1,13 @@
+.header {
+    font-size: 64px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 1.5% 0%;
+}
+
+.background {
+    background-color: aqua;
+}
+
+.button {
+    padding: 1% 1% 1% 1%;
+}
