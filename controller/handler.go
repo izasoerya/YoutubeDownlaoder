@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func userInputURL(c *fiber.Ctx) error{
+func UserInputURL(c *fiber.Ctx) error{
 	type Request struct {
 		URL string `json:"url"`
 	}

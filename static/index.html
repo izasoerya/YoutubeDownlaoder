@@ -1,13 +1,27 @@
 <!DOCTYPE html>
-<head>
+<html>
 
+<head>
+    <script src="/static/js/userinput.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
-<body>
-    <header> Youtube Donwloader EZ </header>
-    <div>
-        <button>
-            
-        </button>
+<body style="text-align: center; background-color: aqua;">
+    
+    <div class="header"><header class="header"> Youtube Donwloader EZ </header></div>
+    
+    <div style="padding: 1% 0%;">
+        <form>
+            <label> Masukan Link Youtube </label>
+            <br>
+            <input type="text" id="linkYoutube">
+        </form>
+
+        <div class="button">
+            <button id="download" onclick="buttonSubmit()"> Download </button>
+        </div>
     </div>
+
 </body>
+
+</html>
