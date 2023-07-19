@@ -18,7 +18,7 @@ func UserInputURL(c *fiber.Ctx) error{
 
 	url := body.URL
 	fmt.Println(url)
-
+	
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"status":"OK",
 		"message": url,
