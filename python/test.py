@@ -1,17 +1,18 @@
 # https://www.youtube.com/watch?v=rCLekTzKUrw&list=RDMMrCLekTzKUrw
 
+import sys
 from pytube import YouTube
 
-def Download(link):
+def Download(link, savePath):
     youtubeObject = YouTube(link)
     youtubeObject = youtubeObject.streams.get_highest_resolution()
     try:
-        youtubeObject.download(saveDir)
+        youtubeObject.download(savePath)
     except:
         print("An error has occurred")
     print("Download is completed successfully")
 
-
-saveDir = "/home/iza/Documents/Video"
-link = input("Enter the YouTube video URL: ")
-Download("https://www.youtube.com/watch?v=rCLekTzKUrw&list=RDMMrCLekTzKUrw")
+if __name__ == "__main__":
+    savePath = "/home/iza/Documents/Video"
+    url = sys.argv[1]
+    Download(url, savePath)
