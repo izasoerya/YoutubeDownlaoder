@@ -8,30 +8,27 @@ import (
 	"github.com/izasoerya/ytdownload/router"
 )
 
-func setupRoutes(app *fiber.App) {									//* Create home page
-	api := app.Group("/api")
-	api.Get("", func(c *fiber.Ctx) error {
-		return c.Status(fiber.StatusOK).JSON(fiber.Map{
-			"success": true,
-			"message": "api endpoint",
-		})
-	})
-	router.SetupRouter(api.Group("/link"))
-}
-
 func main() {
+	/* Generate static HTML file */
 	engine := html.New("./static", ".html")
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
-	app.Static("/static", "./static")
-
-	app.Use(logger.New())
-	setupRoutes(app)
-	
+	/* Serve HTML as index in /home */
 	app.Get("/home", func(c *fiber.Ctx) error {						//* set index.html in /app
 		return c.Render("index", fiber.Map{})
 	})
+	app.Static("/static", "./static")
 
-	app.Listen(":3000")
+
+
+	/* Logger middleware */
+	app.Use(logger.New())
+
+	/* Give router endpoint */
+	router.SetupRouter(app.Group("/download"))	
+
+	if err:= app.Listen(":3000"); err != nil {
+		panic(err);
+	}
 }

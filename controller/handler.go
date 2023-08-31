@@ -31,7 +31,7 @@ func UserInputURL(c *fiber.Ctx) error{
 func fetchPython(url string) {
 	dir := "/home/iza/Documents/Coding/Golang/src/downloaderYT/python"
 	interpreterPath := "/home/iza/Documents/Coding/Golang/src/downloaderYT/python/venv/bin/python3"
-	fileName := "test.py"
+	fileName := "download.py"
 
 	cmd := exec.Command(interpreterPath, fileName, url)
 	cmd.Dir = dir
