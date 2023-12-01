@@ -3,10 +3,7 @@ function buttonSubmit() {
 	if (titleInput.value === "") {
 		console.log(titleInput.value)
 		alert("Fill the link!")
-		window.location.href = "localhost:3000/home"
-	}
-	else {
-		alert(titleInput.value)
+		return false
 	}
     const urlData = {
         url: titleInput.value
