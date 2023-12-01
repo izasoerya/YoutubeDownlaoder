@@ -17,20 +17,25 @@ func ParseLinkYoutube(c *fiber.Ctx) error {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	url := body.URL
 	fmt.Println(url)
-	executeDownload(url)
 
+	errorCode := executeDownload(url)
+	if errorCode == -1 {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"status":  "Failed",
+			"message": "Error at parsing Pytube",
+		})
+	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"status":  "OK",
 		"message": url,
 	})
 }
 
-func executeDownload(url string) {
-	dir := "C:/Users/ihzas/OneDrive/Dokumen/Coding/Golang/ytdownload/controller"
-	interpreterPath := "python3"
+func executeDownload(url string) int8 {
+	dir := os.Getenv("DIRECTORY")
+	interpreterPath := os.Getenv("INTERPRETER_PATH")
 	fileName := "download.py"
 
 	cmd := exec.Command(interpreterPath, fileName, url)
@@ -40,6 +45,7 @@ func executeDownload(url string) {
 
 	err := cmd.Run()
 	if err != nil {
-		panic(err)
+		return -1
 	}
+	return 0
 }

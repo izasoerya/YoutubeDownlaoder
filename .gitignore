@@ -1,4 +1,6 @@
 go.mod
 go.sum
+.env
 tmp
 python/venv
+controller/downloads
