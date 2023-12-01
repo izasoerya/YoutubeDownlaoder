@@ -1,9 +1,15 @@
 function buttonSubmit() {
     const titleInput = document.getElementById('linkYoutube');		//* GET input
-	const inputValue = titleInput.value;	
-
+	if (titleInput.value === "") {
+		console.log(titleInput.value)
+		alert("Fill the link!")
+		window.location.href = "localhost:3000/home"
+	}
+	else {
+		alert(titleInput.value)
+	}
     const urlData = {
-        url: inputValue
+        url: titleInput.value
     };
 
     fetch('/download/', {

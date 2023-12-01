@@ -6,5 +6,5 @@ import (
 )
 
 func SetupRouter(route fiber.Router) {
-	route.Post("", controller.UserInputURL)
+	route.Post("", controller.ParseLinkYoutube)
 }
